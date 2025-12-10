@@ -1,0 +1,22 @@
+
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        namespace: public
+        username: ${spring.cloud.nacos.username}
+        password: ${spring.cloud.nacos.password}
+      config:
+        server-addr: 127.0.0.1:8848
+        group: DEFAULT_GROUP
+        file-extension: yaml
+        namespace: public
+        username: ${spring.cloud.nacos.username}
+        password: ${spring.cloud.nacos.password}
+      username: nacos
+      password: nacos
+  config:
+    import: optional:nacos:${spring.application.name}.yaml
