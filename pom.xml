@@ -14,11 +14,15 @@
 
     <!-- 所有 Java 微服务模块 -->
     <modules>
+        <module>common-core</module>
         <module>gateway-service</module>
         <module>user-service</module>
         <module>account-service</module>
         <module>order-service</module>
         <module>settlement-service</module>
+        <module>common-web</module>
+        <module>common-datasource</module>
+
         <!--        <module>account-service</module>-->
 <!--        <module>order-service</module>-->
 <!--        <module>settlement-service</module>-->

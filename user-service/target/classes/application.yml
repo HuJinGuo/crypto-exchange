@@ -13,7 +13,7 @@ spring:
     nacos:
       server-addr: 127.0.0.1:8848
       discovery:
-        ip: 192.168.2.110
+        # ip: 192.168.2.110
         namespace: public
         username: ${spring.cloud.nacos.username}
         password: ${spring.cloud.nacos.password}
@@ -27,4 +27,12 @@ spring:
       username: nacos
       password: nacos
   config:
-    import: optional:nacos:user-service.yaml
+    import: optional:nacos:${spring.application.name}.yaml
+
+
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    reactor.netty.http.client: DEBUG
+    org.springframework.cloud.loadbalancer: DEBUG
+    org.springframework.web.reactive: DEBUG

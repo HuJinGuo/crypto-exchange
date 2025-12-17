@@ -16,7 +16,6 @@ import org.springframework.core.env.Environment;
 @SpringBootApplication(exclude = {
         org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.class,
         org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration.class,
-//        org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration.class
 })
 @EnableDiscoveryClient
 public class GatewayApplication {
@@ -31,6 +30,8 @@ public class GatewayApplication {
             System.out.println("==== DEBUG ROUTES ====");
             System.out.println(env.getProperty("spring.cloud.gateway.routes[0].id"));
             System.out.println(env.getProperty("spring.cloud.gateway.routes[0].uri"));
+            new Object();
+
         };
     }
 }
