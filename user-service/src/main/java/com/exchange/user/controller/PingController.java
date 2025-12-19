@@ -1,10 +1,16 @@
 package com.exchange.user.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.exchange.common.redis.constant.RedisKeyPrefix;
+import com.exchange.common.redis.util.RedisKeyUtil;
 import com.exchange.user.UserEntry;
 import com.exchange.user.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: Jinyue
@@ -17,12 +23,16 @@ import org.springframework.web.bind.annotation.*;
 public class PingController {
 
     @Autowired
-    UserMapper userMapper;
+    private RedisTemplate<String, Object> redisTemplate;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @GetMapping("/ping")
     public String ping() {
         return "user-service pong";
     }
+
 
     @PostMapping("insertUser")
     public String insertUser(@RequestParam("userName") String userName, @RequestParam("password") String password) {
@@ -35,6 +45,12 @@ public class PingController {
         }else{
             log.info("插入失败----");
         }
+        UserEntry userEntry1 = userMapper.selectOne(new LambdaQueryWrapper<UserEntry>().eq(UserEntry::getUserName, userName));
+        String key = RedisKeyUtil.build(RedisKeyPrefix.USER, userEntry1.getId());
+        redisTemplate.opsForValue().set(key, userEntry1, 1, TimeUnit.HOURS);
         return "user-service insertUser";
     }
+
+
+
 }

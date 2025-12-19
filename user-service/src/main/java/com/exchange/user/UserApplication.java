@@ -1,5 +1,6 @@
 package com.exchange.user;
 
+import com.exchange.common.redis.annotation.EnableCommonRedis;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableCommonRedis
 @ComponentScan(basePackages = {
         "com.exchange.user",
         "com.exchange.common.datasource"
