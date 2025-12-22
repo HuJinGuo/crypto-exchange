@@ -12,6 +12,7 @@ public class DebugConfig {
 
     private final DiscoveryClient discoveryClient;
 
+
     public DebugConfig(DiscoveryClient discoveryClient) {
         this.discoveryClient = discoveryClient;
     }

@@ -1,5 +1,6 @@
 package com.exchange.gateway.config;
 
+import com.exchange.gateway.filter.TraceGlobalFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

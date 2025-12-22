@@ -23,6 +23,7 @@
         <module>common-web</module>
         <module>common-datasource</module>
         <module>common-redis</module>
+        <module>common-auth</module>
 
         <!--        <module>account-service</module>-->
 <!--        <module>order-service</module>-->

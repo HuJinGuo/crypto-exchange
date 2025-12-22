@@ -1,4 +1,4 @@
-package com.exchange.gateway.config;
+package com.exchange.gateway.filter;
 
 import com.exchange.common.core.constant.TraceConstants;
 import com.exchange.common.core.util.TraceIdUtil;

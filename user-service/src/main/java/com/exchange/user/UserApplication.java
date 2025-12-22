@@ -18,7 +18,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableCommonRedis
 @ComponentScan(basePackages = {
         "com.exchange.user",
-        "com.exchange.common.datasource"
+        "com.exchange.common.datasource",
 })
 public class UserApplication {
     public static void main(String[] args) {
