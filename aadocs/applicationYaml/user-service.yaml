@@ -1,0 +1,23 @@
+server:
+  port: 8101
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/exchange_user?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: 123456
+      database: 0
+      timeout: 3000
+
+exchange:
+  auth:
+    secret: your_32_chars_secret_123das121asasdqwd
+    expire-seconds: 7200
+    single-login: true

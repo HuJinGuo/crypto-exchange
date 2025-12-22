@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: 123456
+      database: 0
+      timeout: 3000
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true   # 自动根据服务名进行路由 lb://xxx
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix=1
+        - id: account-service
+          uri: lb://account-service
+          predicates:
+            - Path=/account/**
+          filters:
+            - StripPrefix=1
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
+          filters:
+            - StripPrefix=1
+        - id: settlement-service
+          uri: lb://settlement-service
+          predicates:
+            - Path=/settlement/**
+          filters:
+            - StripPrefix=1
+
+exchange:
+  auth:
+    secret: your_32_chars_secret_123das121asasdqwd
+    expire-seconds: 7200
+    whitelist:
+      - /user/login
+      # - /ping
+      - /actuator/**
+    single-login: true
